@@ -1,0 +1,62 @@
+#labels Featured
+<h3>Flash Vars:</h3>
+<table width="100%" border="1">
+  <tr>
+    <td width="50" bgcolor="#CCCCCC"><strong>Variable </strong></td>
+    <td width="50" bgcolor="#CCCCCC"><strong>Type</strong></td>
+    <td width="300" bgcolor="#CCCCCC"><strong>Description</strong></td>
+  </tr>
+  <tr>
+    <td width="50">channel</td>
+    <td width="50">String</td>
+    <td width="300"><p>Multicast Group Name: This is used in making netstream connections or creating private groups using NetGroups</p>    </td>
+  </tr>
+  <tr>
+    <td width="50">rtmfp</td>
+    <td width="50">String</td>
+    <td width="300">Your RTMFP url: This can be your cirrus or FMS based rtmfp url</td>
+  </tr>
+  <tr>
+    <td width="50">stream</td>
+    <td width="50">String</td>
+    <td width="300">Multicast stream name:</td>
+  </tr>
+  <tr>
+    <td width="50">isPrivate</td>
+    <td width="50">Boolean</td>
+    <td width="300">Use private group : Specifies whether to create a NetGroup or not.</td>
+  </tr>
+</table>
+
+
+<h3><strong>SWFObject Example:</strong></h3>
+<p>
+<pre>
+<script type="text/javascript" src="js/swfobject.js"></script> 
+<script type="text/javascript"> 
+var flashvars = {};
+flashvars.channel = "somechannelname";
+flashvars.rtmfp = "rtmfp://p2p.rtmfp.net/xxxxxxxxxxxxxxxxxxxxxxxxx";
+flashvars.stream = "livestream";
+var params = {};
+params.quality = "autohigh";
+params.scale = "noscale";
+params.salign = "tl";
+params.allowfullscreen = "true";
+params.allowscriptaccess = "sameDomain";
+var attributes = {};
+attributes.id = "peerviewer";
+attributes.name = "peerviewer";
+swfobject.embedSWF("viewer.swf", "myAlternativeContent", "320", "240", "10.1.0", "swf/playerProductInstall.swf", flashvars, params, attributes);
+
+function Alert(params)
+{
+alert(params);
+}
+</script>
+</pre>
+</p>
+
+<h3><strong>Special Notes:</strong></h3>
+<p>The player resolves any group name specified to <span class="style1">swfdomain/channel</span> to keep the group unique as far as possible. Hence your broadcasting application must broadcast in the same manner to be able to reach viewer.</p>
+<p>Eg: mychannel resolves to localhost/mychannel.</p>
